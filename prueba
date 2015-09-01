@@ -1,3 +1,19 @@
+from datetime import datetime
+
+class Colectivo:
+
+	def __init__ (self, interno, empresa, linea):
+		self.interno = interno
+		self.empresa = empresa
+		self.linea = linea
+
+class Viaje:
+
+	def __init__ (self, colectivo, horario, monto):
+		self.colectivo = colectivo
+		self.horario = datetime.strptime(horario)
+		self.monto = monto
+
 class Tarjeta:
 	def __init__(self, serie):
 		self.serie = serie
@@ -12,7 +28,7 @@ class Tarjeta:
 			if (self.plus == 2):
 				print ("Ultimo plus")
 			else:
-				print ("Su saldo es: %i", self.saldo) 
+				print ("Su saldo es:" + str(self.saldo)) 
 				
 	def RecargaTarjeta (self, monto):
 		if (monto == 196):
@@ -33,16 +49,18 @@ class Tarjeta:
 
 class TarjetaComun (Tarjeta):
 
-	def PagarBoleto (self, interno, horario):
-		if ((horario - self.Viaje[0].horario) < 60 && self.Viaje[0].colectivo.interno != interno):
+
+	def PagarBoleto (self, bondi, horario1):
+		horario=datetime.strptime(horario1,"%d/%m/%Y %H:%M")
+		if ((horario - self.Viaje[0].horario) < 60 and self.Viaje[0].colectivo.interno != bondi.interno):
 			if (self.saldo > 1.90):
 				for i in range (5,0):
 					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
 					self.Viaje[i].horario = self.Viaje[i-1].horario
 					self.Viaje[i].monto = self.Viaje[i-1].monto
 				self.saldo = self.saldo - 1.90
-				self.Viaje[0].colectivo.interno = interno
-				self.Viaje[0].horario = horario
+				self.Viaje[0].colectivo.interno = bondi.interno
+				self.Viaje[0].horario = horario1
 				self.Viaje[0].monto = 1.90
 				return true
 			else:
@@ -55,26 +73,28 @@ class TarjetaComun (Tarjeta):
 					self.Viaje[i].horario = self.Viaje[i-1].horario
 					self.Viaje[i].monto = self.Viaje[i-1].monto
 				self.saldo = self.saldo - 5.75
-				self.Viaje[0].colectivo.interno = interno
-				self.Viaje[0].horario = horario
+				self.Viaje[0].colectivo.interno = bondi.interno
+				self.Viaje[0].horario = horario1
 				self.Viaje[0].monto = 5.75
 				return true
 			else:
 				return false
 
+
 class TarjetaMedioBoleto (Tarjeta):
 
 
-	def PagarBoleto (self, interno, horario):
-		if ((horario - self.Viaje[0].horario) < 60 && self.Viaje[0].colectivo.interno != interno):
+	def PagarBoleto (self, bondi, horario1):
+		horario=datetime.strptime(horario1,"%d/%m/%Y %H:%M")
+		if ((horario - self.Viaje[0].horario) < 60 and self.Viaje[0].colectivo.interno != bondi.interno):
 			if (self.saldo > 0.96):
 				for i in range (5,0):
 					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
 					self.Viaje[i].horario = self.Viaje[i-1].horario
 					self.Viaje[i].monto = self.Viaje[i-1].monto
 				self.saldo = self.saldo - 0.96
-				self.Viaje[0].colectivo.interno = interno
-				self.Viaje[0].horario = horario
+				self.Viaje[0].colectivo.interno = bondi.interno
+				self.Viaje[0].horario = horario1
 				self.Viaje[0].monto = 0.96
 				return true
 			else:
@@ -87,23 +107,22 @@ class TarjetaMedioBoleto (Tarjeta):
 					self.Viaje[i].horario = self.Viaje[i-1].horario
 					self.Viaje[i].monto = self.Viaje[i-1].monto
 				self.saldo = self.saldo - 2.90
-				self.Viaje[0].colectivo.interno = interno
-				self.Viaje[0].horario = horario
+				self.Viaje[0].colectivo.interno = bondi.interno
+				self.Viaje[0].horario = horario1
 				self.Viaje[0].monto = 2.90
 				return true
 			else:
 				return false
 
-class Colectivo:
 
-	def __init__ (self, interno, empresa, linea):
-		self.interno = interno
-		self.empresa = empresa
-		self.linea = linea
+tarj = TarjetaComun(1)
+tarj.Saldo()
+tarj.RecargaTarjeta(196)
+tarj.Saldo()
+tarj.RecargaTarjeta(20)
+tarj.Saldo()
+    
+lak = Colectivo (1,"semtur", "k")
+un122 = Colectivo (2, "semtur", "122v")
 
-class Viaje:
-
-	def __init__ (self, colectivo, horario, monto):
-		self.colectivo = colectivo
-		self.horario = horario
-		self.monto = monto
+tarj.PagarBoleto (un122, "15/10/2014 21:00")
