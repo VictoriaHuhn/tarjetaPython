@@ -1,0 +1,109 @@
+class Tarjeta:
+	def __init__(self, serie):
+		self.serie = serie
+		self.saldo = 0
+		self.plus = 0
+		self.Viaje = [ x for x in range(0,5) ]
+
+	def Saldo (self):
+		if (self.plus == 1):
+			print ("Viaje plus")
+		else:
+			if (self.plus == 2):
+				print ("Ultimo plus")
+			else:
+				print ("Su saldo es: %i", self.saldo) 
+				
+	def RecargaTarjeta (self, monto):
+		if (monto == 196):
+			self.saldo = self.saldo + 230
+		else:
+			if (monto ==  368):
+				self.saldo = self.saldo + 460
+			else:
+				self.saldo = self.saldo + monto
+
+	def ViajesRealizados (self):
+		for i in range (0,5):
+			print (self.Viaje[i].colectivo.linea)
+			print (self.Viaje[i].colectivo.interno)
+			print (self.Viaje[i].horario)
+			print (self.Viaje[i].monto)
+
+
+class TarjetaComun (Tarjeta):
+
+	def PagarBoleto (self, interno, horario):
+		if ((horario - self.Viaje[0].horario) < 60 && self.Viaje[0].colectivo.interno != interno):
+			if (self.saldo > 1.90):
+				for i in range (5,0):
+					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+					self.Viaje[i].horario = self.Viaje[i-1].horario
+					self.Viaje[i].monto = self.Viaje[i-1].monto
+				self.saldo = self.saldo - 1.90
+				self.Viaje[0].colectivo.interno = interno
+				self.Viaje[0].horario = horario
+				self.Viaje[0].monto = 1.90
+				return true
+			else:
+				return false
+
+		else:
+			if (self.saldo > 5.75):
+				for i in range (5,0):
+					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+					self.Viaje[i].horario = self.Viaje[i-1].horario
+					self.Viaje[i].monto = self.Viaje[i-1].monto
+				self.saldo = self.saldo - 5.75
+				self.Viaje[0].colectivo.interno = interno
+				self.Viaje[0].horario = horario
+				self.Viaje[0].monto = 5.75
+				return true
+			else:
+				return false
+
+class TarjetaMedioBoleto (Tarjeta):
+
+
+	def PagarBoleto (self, interno, horario):
+		if ((horario - self.Viaje[0].horario) < 60 && self.Viaje[0].colectivo.interno != interno):
+			if (self.saldo > 0.96):
+				for i in range (5,0):
+					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+					self.Viaje[i].horario = self.Viaje[i-1].horario
+					self.Viaje[i].monto = self.Viaje[i-1].monto
+				self.saldo = self.saldo - 0.96
+				self.Viaje[0].colectivo.interno = interno
+				self.Viaje[0].horario = horario
+				self.Viaje[0].monto = 0.96
+				return true
+			else:
+				return false
+
+		else:
+			if (self.saldo > 2.90):
+				for i in range (5,0):
+					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+					self.Viaje[i].horario = self.Viaje[i-1].horario
+					self.Viaje[i].monto = self.Viaje[i-1].monto
+				self.saldo = self.saldo - 2.90
+				self.Viaje[0].colectivo.interno = interno
+				self.Viaje[0].horario = horario
+				self.Viaje[0].monto = 2.90
+				return true
+			else:
+				return false
+
+class Colectivo:
+
+	def __init__ (self, interno, empresa, linea):
+		self.interno = interno
+		self.empresa = empresa
+		self.linea = linea
+
+class Viaje:
+
+	def __init__ (self, colectivo, horario, monto):
+		self.colectivo = colectivo
+		self.horario = horario
+		self.monto = monto
