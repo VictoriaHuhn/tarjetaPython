@@ -43,12 +43,13 @@ class Tarjeta:
 
 	def ViajesRealizados (self):
 		for i in range (0,5):
-		    if (colectivo!="NULL" and horario!="NULL" and monto!="NULL"):
-			    print (self.Viaje[i].colectivo.linea)
-			    print (self.Viaje[i].colectivo.interno)
-			    print (self.Viaje[i].horario)
-			    print (self.Viaje[i].monto)
+		    if (self.Viaje[i].colectivo!="NULL" and self.Viaje[i].horario!="01/01/0001 0:00" and self.Viaje[i].monto!=0):
+		    	print (" ")
+		    	print ("Fecha: " + str(self.Viaje[i].horario))
+		    	print ("Linea: " + str(self.Viaje[i].colectivo.linea) + " Interno: " + str(self.Viaje[i].colectivo.interno)) 
+		    	print("Monto: " + str(self.Viaje[i].monto))
 		    else:
+		    	print (" ")
 		        print ("NULL")
 
 
@@ -57,7 +58,7 @@ class TarjetaComun (Tarjeta):
 
 	def PagarBoleto (self, bondi, horario1):
 		horario = datetime.strptime(horario1,"%d/%m/%Y %H:%M")
-		delta=horario - self.Viaje[0].horario
+		delta=(horario - self.Viaje[0].horario)
 		if (delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
 			if (self.saldo > 1.90):
 				for i in range (5,0):
@@ -66,10 +67,10 @@ class TarjetaComun (Tarjeta):
 					self.Viaje[i].monto = self.Viaje[i-1].monto
 				self.saldo = self.saldo - 1.90
 				self.Viaje[0].colectivo = bondi
-				self.Viaje[0].horario = horario1
+				self.Viaje[0].horario = horario
 				self.Viaje[0].monto = 1.90
-				return True
 				print ("Abona Trasbordo")
+				return True
 			else:
 			    print ("Saldo Insuficiente")
 			    return False
@@ -82,7 +83,7 @@ class TarjetaComun (Tarjeta):
 					self.Viaje[i].monto = self.Viaje[i-1].monto
 				self.saldo = self.saldo - 5.75
 				self.Viaje[0].colectivo = bondi
-				self.Viaje[0].horario = horario1
+				self.Viaje[0].horario = horario
 				self.Viaje[0].monto = 5.75
 				print ("Abona Boleto Normal")
 				return True
@@ -97,50 +98,83 @@ class TarjetaMedioBoleto (Tarjeta):
 	def PagarBoleto (self, bondi, horario1):
 		horario=datetime.strptime(horario1,"%d/%m/%Y %H:%M")
 		delta=horario - self.Viaje[0].horario
-		if ( delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
-			if (self.saldo > 0.96):
-				for i in range (5,0):
-					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-					self.Viaje[i].horario = self.Viaje[i-1].horario
-					self.Viaje[i].monto = self.Viaje[i-1].monto
-				self.saldo = self.saldo - 0.96
-				self.Viaje[0].colectivo = bondi
-				self.Viaje[0].horario = horario1
-				self.Viaje[0].monto = 0.96
-				print ("Abona Medio Trasbordo")
-				return True
-			else:
-			    print ("Saldo Insuficiente")
-			    return False
+		if (horario.hour > 5):
+			if ( delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
+				if (self.saldo > 0.96):
+					for i in range (5,0):
+						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+						self.Viaje[i].horario = self.Viaje[i-1].horario
+						self.Viaje[i].monto = self.Viaje[i-1].monto
+					self.saldo = self.saldo - 0.96
+					self.Viaje[0].colectivo = bondi
+					self.Viaje[0].horario = horario
+					self.Viaje[0].monto = 0.96
+					print ("Abona Medio Trasbordo")
+					return True
+				else:
+				    print ("Saldo Insuficiente")
+				    return False
 
+			else:
+				if (self.saldo > 2.90):
+					for i in range (5,0):
+						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+						self.Viaje[i].horario = self.Viaje[i-1].horario
+						self.Viaje[i].monto = self.Viaje[i-1].monto
+					self.saldo = self.saldo - 2.90
+					self.Viaje[0].colectivo = bondi
+					self.Viaje[0].horario = horario
+					self.Viaje[0].monto = 2.90
+					print ("Abona Medio Boleto")
+					return True
+				else:
+				    print ("Saldo Insuficiente")
+				    return False
 		else:
-			if (self.saldo > 2.90):
-				for i in range (5,0):
-					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-					self.Viaje[i].horario = self.Viaje[i-1].horario
-					self.Viaje[i].monto = self.Viaje[i-1].monto
-				self.saldo = self.saldo - 2.90
-				self.Viaje[0].colectivo = bondi
-				self.Viaje[0].horario = horario1
-				self.Viaje[0].monto = 2.90
-				print ("Abona Medio Boleto")
-				return True
+			if (delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
+				if (self.saldo > 1.90):
+					for i in range (5,0):
+						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+						self.Viaje[i].horario = self.Viaje[i-1].horario
+						self.Viaje[i].monto = self.Viaje[i-1].monto
+					self.saldo = self.saldo - 1.90
+					self.Viaje[0].colectivo = bondi
+					self.Viaje[0].horario = horario
+					self.Viaje[0].monto = 1.90
+					print ("Abona Trasbordo")
+					return True
+				else:
+				    print ("Saldo Insuficiente")
+				    return False
+
 			else:
-			    print ("Saldo Insuficiente")
-			    return False
+				if (self.saldo > 5.75):
+					for i in range (5,0):
+						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
+						self.Viaje[i].horario = self.Viaje[i-1].horario
+						self.Viaje[i].monto = self.Viaje[i-1].monto
+					self.saldo = self.saldo - 5.75
+					self.Viaje[0].colectivo = bondi
+					self.Viaje[0].horario = horario
+					self.Viaje[0].monto = 5.75
+					print ("Abona Boleto Normal")
+					return True
+				else:
+				    print ("Saldo Insuficiente")
+				    return False
 
 
-tarj = TarjetaComun(1)
+tarj = TarjetaMedioBoleto(1)
 tarj.Saldo()
-tarj.RecargaTarjeta(196)
-tarj.Saldo()
-tarj.RecargaTarjeta(20)
+tarj.RecargaTarjeta(10)
 tarj.Saldo()
     
-lak = Colectivo (1,"semtur", "k")
+lak = Colectivo (1,"semtur", "K")
 un122 = Colectivo (2, "semtur", "122v")
 tarj.PagarBoleto (un122, "15/10/2014 21:00")
 tarj.Saldo()
-tarj.PagarBoleto (lak, "15/10/2014 23:43")
+tarj.PagarBoleto (lak, "15/10/2014 03:43")
+tarj.Saldo()
+tarj.PagarBoleto (un122, "15/10/2014 23:50")
 tarj.Saldo()
 tarj.ViajesRealizados()
