@@ -1,5 +1,5 @@
 from datetime import datetime
-from tarjeta import *
+#from tarjeta import *
 
 class Colectivo:
 
