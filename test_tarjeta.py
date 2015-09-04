@@ -4,7 +4,7 @@ tarj = TarjetaComun(1)
 tarj.RecargaTarjeta(70)
 
 def test_saldo():
-  assert tarj.Saldo() = 70
+  assert tarj.Saldo() == 70
     
 lak = Colectivo (1,"semtur", "K")
 un122 = Colectivo (2, "semtur", "122v")
