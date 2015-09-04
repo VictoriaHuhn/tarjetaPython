@@ -58,7 +58,7 @@ class TarjetaComun (Tarjeta):
 	def PagarBoleto (self, bondi, horario1):
 		horario = datetime.strptime(horario1,"%d/%m/%Y %H:%M")
 		delta=horario - self.Viaje[0].horario
-		if (delta.seconds < 60 and self.Viaje[0].colectivo.interno != bondi.interno):
+		if (delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
 			if (self.saldo > 1.90):
 				for i in range (5,0):
 					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
@@ -141,3 +141,6 @@ lak = Colectivo (1,"semtur", "k")
 un122 = Colectivo (2, "semtur", "122v")
 tarj.PagarBoleto (un122, "15/10/2014 21:00")
 tarj.Saldo()
+tarj.PagarBoleto (lak, "15/10/2014 23:43")
+tarj.Saldo()
+tarj.ViajesRealizados()
