@@ -15,12 +15,14 @@ class Viaje:
 		self.monto = monto
 
 class Tarjeta:
+
 	def __init__(self, serie):
 		self.serie = serie
 		self.saldo = 0
 		self.plus = 0
-		self.Viaje = [ x for x in range(0,5) ]
-		for p in range(0,5):
+		self.trasbordo = 0
+		self.Viaje = [ x for x in range(0,6) ]
+		for p in range(0,6):
 		    self.Viaje[p]= Viaje();
 
 	def Saldo (self):
@@ -61,10 +63,11 @@ class TarjetaComun (Tarjeta):
 		delta=(horario - self.Viaje[0].horario)
 		if (delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
 			if (self.saldo > 1.90):
-				for i in range (5,0):
-					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-					self.Viaje[i].horario = self.Viaje[i-1].horario
-					self.Viaje[i].monto = self.Viaje[i-1].monto
+				for i in range (0,5):
+					self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo 	
+					self.Viaje[5-i].horario = self.Viaje[4-i].horario
+					self.Viaje[5-i].monto = self.Viaje[4-i].monto
+					print (i)
 				self.saldo = self.saldo - 1.90
 				self.Viaje[0].colectivo = bondi
 				self.Viaje[0].horario = horario
@@ -77,10 +80,10 @@ class TarjetaComun (Tarjeta):
 
 		else:
 			if (self.saldo > 5.75):
-				for i in range (5,0):
-					self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-					self.Viaje[i].horario = self.Viaje[i-1].horario
-					self.Viaje[i].monto = self.Viaje[i-1].monto
+				for i in range(0,5):
+					self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo 	
+					self.Viaje[5-i].horario = self.Viaje[4-i].horario
+					self.Viaje[5-i].monto = self.Viaje[4-i].monto
 				self.saldo = self.saldo - 5.75
 				self.Viaje[0].colectivo = bondi
 				self.Viaje[0].horario = horario
@@ -101,10 +104,10 @@ class TarjetaMedioBoleto (Tarjeta):
 		if (horario.hour > 5):
 			if ( delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
 				if (self.saldo > 0.96):
-					for i in range (5,0):
-						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-						self.Viaje[i].horario = self.Viaje[i-1].horario
-						self.Viaje[i].monto = self.Viaje[i-1].monto
+					for i in range (0,5):
+						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo 	
+						self.Viaje[5-i].horario = self.Viaje[4-i].horario
+						self.Viaje[5-i].monto = self.Viaje[4-i].monto
 					self.saldo = self.saldo - 0.96
 					self.Viaje[0].colectivo = bondi
 					self.Viaje[0].horario = horario
@@ -117,10 +120,10 @@ class TarjetaMedioBoleto (Tarjeta):
 
 			else:
 				if (self.saldo > 2.90):
-					for i in range (5,0):
-						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-						self.Viaje[i].horario = self.Viaje[i-1].horario
-						self.Viaje[i].monto = self.Viaje[i-1].monto
+					for i in range (0,5):
+						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo 	
+						self.Viaje[5-i].horario = self.Viaje[4-i].horario
+						self.Viaje[5-i].monto = self.Viaje[4-i].monto
 					self.saldo = self.saldo - 2.90
 					self.Viaje[0].colectivo = bondi
 					self.Viaje[0].horario = horario
@@ -133,10 +136,10 @@ class TarjetaMedioBoleto (Tarjeta):
 		else:
 			if (delta.seconds < 3600 and self.Viaje[0].colectivo.interno != bondi.interno):
 				if (self.saldo > 1.90):
-					for i in range (5,0):
-						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-						self.Viaje[i].horario = self.Viaje[i-1].horario
-						self.Viaje[i].monto = self.Viaje[i-1].monto
+					for i in range (0,5):
+						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo 	
+						self.Viaje[5-i].horario = self.Viaje[4-i].horario
+						self.Viaje[5-i].monto = self.Viaje[4-i].monto
 					self.saldo = self.saldo - 1.90
 					self.Viaje[0].colectivo = bondi
 					self.Viaje[0].horario = horario
@@ -149,10 +152,10 @@ class TarjetaMedioBoleto (Tarjeta):
 
 			else:
 				if (self.saldo > 5.75):
-					for i in range (5,0):
-						self.Viaje[i].colectivo = self.Viaje[i-1].colectivo 	
-						self.Viaje[i].horario = self.Viaje[i-1].horario
-						self.Viaje[i].monto = self.Viaje[i-1].monto
+					for i in range (0,5):
+						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo 	
+						self.Viaje[5-i].horario = self.Viaje[4-i].horario
+						self.Viaje[5-i].monto = self.Viaje[4-i].monto
 					self.saldo = self.saldo - 5.75
 					self.Viaje[0].colectivo = bondi
 					self.Viaje[0].horario = horario
@@ -164,17 +167,23 @@ class TarjetaMedioBoleto (Tarjeta):
 				    return False
 
 
-tarj = TarjetaMedioBoleto(1)
+tarj = TarjetaComun(1)
 tarj.Saldo()
-tarj.RecargaTarjeta(10)
+tarj.RecargaTarjeta(70)
 tarj.Saldo()
     
 lak = Colectivo (1,"semtur", "K")
 un122 = Colectivo (2, "semtur", "122v")
 tarj.PagarBoleto (un122, "15/10/2014 21:00")
 tarj.Saldo()
-tarj.PagarBoleto (lak, "15/10/2014 03:43")
+tarj.PagarBoleto (lak, "15/10/2014 22:30")
 tarj.Saldo()
-tarj.PagarBoleto (un122, "15/10/2014 23:50")
+tarj.PagarBoleto (lak, "15/10/2014 22:45")
 tarj.Saldo()
+tarj.PagarBoleto (lak, "15/10/2014 22:55")
+tarj.Saldo()
+tarj.PagarBoleto (lak, "15/10/2014 22:56")
+tarj.PagarBoleto (un122, "15/10/2014 22:45")
+tarj.Saldo()
+
 tarj.ViajesRealizados()
