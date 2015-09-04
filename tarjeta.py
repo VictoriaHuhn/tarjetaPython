@@ -20,20 +20,14 @@ class Tarjeta:
 	def __init__(self, serie):
 		self.serie = serie
 		self.saldo = 0
-		self.plus = 0
 		self.trasbordo = 0
 		self.Viaje = [ x for x in range(0,6) ]
 		for p in range(0,6):
 		    self.Viaje[p]= Viaje();
 
 	def Saldo (self):
-		if (self.plus == 1):
-			print ("Viaje plus")
-		else:
-			if (self.plus == 2):
-				print ("Ultimo plus")
-			else:
-				print ("Su saldo es: " + str(self.saldo)) 
+		print ("Su saldo es: " + str(self.saldo)) 
+		return self.saldo
 				
 	def RecargaTarjeta (self, monto):
 		if (monto == 196):
