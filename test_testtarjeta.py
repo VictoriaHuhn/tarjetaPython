@@ -32,11 +32,14 @@ class Tarjeta:
 	def RecargaTarjeta (self, monto):
 		if (monto == 196):
 			self.saldo = self.saldo + 230
+			return 230
 		else:
 			if (monto ==  368):
 				self.saldo = self.saldo + 460
+				return 460
 			else:
 				self.saldo = self.saldo + monto
+				return monto
 
 	def ViajesRealizados (self):
 		for i in range (0,5):
