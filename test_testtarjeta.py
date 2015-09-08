@@ -184,8 +184,8 @@ def test_RecargaTarjeta1():
 	assert tarjM.RecargaTarjeta (368) == 460
 
 K1 = Colectivo (1,"Semtur","K")
-122v2= Colectivo(2,"Semtur","122v")
+v122= Colectivo(2,"Semtur","122v")
 
 def test_PagarBoleto1():
-	assert tarj.PagarBoleto(122v,"06/07/08 04:20") == False
+	assert tarj.PagarBoleto(v122,"06/07/08 04:20") == False
 	
