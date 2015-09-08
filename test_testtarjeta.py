@@ -173,7 +173,7 @@ tarjM = TarjetaMedioBoleto(2)
 
 def test_Saldo1():
 	assert tarj.Saldo() == 0
-    assert tarjM.Saldo() == 0
+	assert tarjM.Saldo() == 0
 
 tarj.RecargaTarjeta(70)
 tarjM.RecargaTarjeta(35)
