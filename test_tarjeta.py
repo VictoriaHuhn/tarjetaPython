@@ -1,4 +1,4 @@
-from tarjeta.py import *
+from tarjeta import *
 
 tarj = TarjetaComun(1)
 tarjM = TarjetaMedioBoleto(2)
