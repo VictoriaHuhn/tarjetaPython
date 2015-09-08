@@ -69,4 +69,4 @@ def test_Tranbordo():
 	assert tarjM.PagarBoleto(K1,"06/07/2008 06:20") == True
 	assert tarjM.PagarBoleto(v122,"06/07/2008 06:40") == True
 	assert tarjM.Saldo() == 0
-	assert tarj.Saldo() == 1.90
+	assert tarj.Saldo() == round(1.90)
