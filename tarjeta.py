@@ -49,7 +49,6 @@ class Tarjeta:
 		    	print (" ")
 		    	print ("NULL")
 
-
 class TarjetaComun (Tarjeta):
 
 
