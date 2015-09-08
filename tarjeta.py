@@ -59,7 +59,7 @@ class TarjetaComun (Tarjeta):
 		horario = datetime.strptime(horario1,"%d/%m/%Y %H:%M")
 		delta=(horario - self.Viaje[0].horario)
 		if (delta.seconds <= 3600 and self.Viaje[0].colectivo.interno != bondi.interno  and self.trasbordo == 0):
-			if (self.saldo > 1.90):
+			if (self.saldo >= 1.90):
 				for i in range (0,5):
 					self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo
 					self.Viaje[5-i].horario = self.Viaje[4-i].horario
@@ -76,7 +76,7 @@ class TarjetaComun (Tarjeta):
 			    return False
 
 		else:
-			if (self.saldo > 5.75):
+			if (self.saldo >= 5.75):
 				for i in range(0,5):
 					self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo
 					self.Viaje[5-i].horario = self.Viaje[4-i].horario
@@ -101,7 +101,7 @@ class TarjetaMedioBoleto (Tarjeta):
 		delta=horario - self.Viaje[0].horario
 		if (horario.hour > 5):
 			if ( delta.seconds <= 3600 and self.Viaje[0].colectivo.interno != bondi.interno and self.transbordo == 0):
-				if (self.saldo > 0.96):
+				if (self.saldo >= 0.96):
 					for i in range (0,5):
 						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo
 						self.Viaje[5-i].horario = self.Viaje[4-i].horario
@@ -118,7 +118,7 @@ class TarjetaMedioBoleto (Tarjeta):
 				    return False
 
 			else:
-				if (self.saldo > 2.90):
+				if (self.saldo >= 2.90):
 					for i in range (0,5):
 						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo
 						self.Viaje[5-i].horario = self.Viaje[4-i].horario
@@ -135,7 +135,7 @@ class TarjetaMedioBoleto (Tarjeta):
 				    return False
 		else:
 			if (delta.seconds <= 3600 and self.Viaje[0].colectivo.interno != bondi.interno  and self.transbordo == 0):
-				if (self.saldo > 1.90):
+				if (self.saldo >= 1.90):
 					for i in range (0,5):
 						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo
 						self.Viaje[5-i].horario = self.Viaje[4-i].horario
@@ -152,7 +152,7 @@ class TarjetaMedioBoleto (Tarjeta):
 				    return False
 
 			else:
-				if (self.saldo > 5.75):
+				if (self.saldo >= 5.75):
 					for i in range (0,5):
 						self.Viaje[5-i].colectivo = self.Viaje[4-i].colectivo
 						self.Viaje[5-i].horario = self.Viaje[4-i].horario
