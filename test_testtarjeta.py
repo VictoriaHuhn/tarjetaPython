@@ -172,17 +172,16 @@ tarj = TarjetaComun(1)
 tarjM = TarjetaMedioBoleto(2)
 
 def test_Saldo1():
-	assert tarj.Saldo() == 0
-	assert tarjM.Saldo() == 0
+	assert tarj.Saldo() == tarj.saldo
+	assert tarjM.Saldo() == tarjM.saldo
 
 tarj.RecargaTarjeta(70)
 tarjM.RecargaTarjeta(35)
+
 def test_RecargaTarjeta1():
-	assert tarj.Saldo() == 70
-	assert tarjM.Saldo() == 35
-	assert RecargaTarjeta(70) == 70
-	assert RecargaTarjeta (196) == 230
-	assert RecargaTarjeta (368) == 460
+	assert tarj.RecargaTarjeta(70) == 70
+	assert tarj.RecargaTarjeta (196) == 230
+	assert tarjM.RecargaTarjeta (368) == 460
 
 
 
