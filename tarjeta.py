@@ -47,7 +47,7 @@ class Tarjeta:
 		    	print("Monto: " + str(self.Viaje[i].monto))
 		    else:
 		    	print (" ")
-		        print ("NULL")
+		    	print ("NULL")
 
 
 class TarjetaComun (Tarjeta):
