@@ -40,14 +40,14 @@ class Tarjeta:
 
 	def ViajesRealizados (self):
 		for i in range (0,5):
-		    if (self.Viaje[i].colectivo!="NULL" and self.Viaje[i].horario!="01/01/0001 0:00" and self.Viaje[i].monto!=0):
-		    	print (" ")
-		    	print ("Fecha: " + str(self.Viaje[i].horario))
-		    	print ("Linea: " + str(self.Viaje[i].colectivo.linea) + " Interno: " + str(self.Viaje[i].colectivo.interno)) 
-		    	print("Monto: " + str(self.Viaje[i].monto))
-		    else:
-		    	print (" ")
-		    	print ("NULL")
+			if (self.Viaje[i].colectivo!="NULL" and self.Viaje[i].horario!="01/01/0001 0:00" and self.Viaje[i].monto!=0):
+		    		print (" ")
+		    		print ("Fecha: " + str(self.Viaje[i].horario))
+		    		print ("Linea: " + str(self.Viaje[i].colectivo.linea) + " Interno: " + str(self.Viaje[i].colectivo.interno)) 
+		    		print("Monto: " + str(self.Viaje[i].monto))
+			else:
+				print (" ")
+				print ("NULL")
 
 class TarjetaComun (Tarjeta):
 
