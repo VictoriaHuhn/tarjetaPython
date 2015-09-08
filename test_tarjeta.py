@@ -10,7 +10,7 @@ def test_RecargaTarjeta1():
 
 	assert RecargaTarjeta(70) == 70
 	assert RecargaTarjeta (196) == 230
-	assert RecargaTarjeta (2)
+	assert RecargaTarjeta (368) == 460
 
 lak = Colectivo (1,"semtur", "K")
 un122 = Colectivo (2, "semtur", "122v")
