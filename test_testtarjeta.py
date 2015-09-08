@@ -169,16 +169,18 @@ class TarjetaMedioBoleto (Tarjeta):
 				    return False
 
 tarj = TarjetaComun(1)
+tarjM = TarjetaMedioBoleto(2)
 
 def test_Saldo1():
 	assert tarj.Saldo() == 0
 
+tarj.RecargaTarjeta(70)
 def test_RecargaTarjeta1():
-	assert tarj.Saldo() == 70
-
+	assert tarj.Saldo()==70
 	assert RecargaTarjeta(70) == 70
 	assert RecargaTarjeta (196) == 230
 	assert RecargaTarjeta (368) == 460
+
 
 lak = Colectivo (1,"semtur", "K")
 un122 = Colectivo (2, "semtur", "122v")
