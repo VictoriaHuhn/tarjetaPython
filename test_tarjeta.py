@@ -33,5 +33,14 @@ def test_PagarBoletoSinSaldo():
 	assert tarjM.PagarBoleto(v122,"06/07/2008 04:20") == False
 	assert tarj.PagarBoleto(v122,"06/07/2008 04:20") == False
 	
-#def test_PagarBoleto()
-	
+def test_PagarBoleto():
+	K1 = Colectivo (1,"Semtur","K")
+	v122= Colectivo(2,"Semtur","122v")
+	tarj = TarjetaComun(1)
+	tarjM = TarjetaMedioBoleto(2)
+	tarj.RecargaTarjeta(5.75)
+	tarjM.RecargaTarjeta(2.90)
+	assert tarjM.PagarBoleto(v122,"06/07/2008 04:20") == True
+	assert tarj.PagarBoleto(v122,"06/07/2008 04:20") == True
+	assert tarjM.Saldo() == 0
+	assert tarj.Saldo() == 0
