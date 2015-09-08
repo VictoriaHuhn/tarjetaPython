@@ -188,4 +188,5 @@ v122= Colectivo(2,"Semtur","122v")
 
 def test_PagarBoleto1():
 	assert tarjM.PagarBoleto(v122,"06/07/2008 04:20") == False
+	assert tarj.PagarBoleto(v122,"06/07/2008 04:20") == False
 	
