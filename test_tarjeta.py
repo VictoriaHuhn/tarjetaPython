@@ -20,10 +20,12 @@ def test_RecargaTarjeta1():
 	tarj.saldo == 70
 	tarjM.saldo == 35
 
-K1 = Colectivo (1,"Semtur","K")
-v122= Colectivo(2,"Semtur","122v")
 
 def test_PagarBoleto1():
+	K1 = Colectivo (1,"Semtur","K")
+	v122= Colectivo(2,"Semtur","122v")
+	tarj = TarjetaComun(1)
+	tarjM = TarjetaMedioBoleto(2)
 	assert tarjM.PagarBoleto(v122,"06/07/2008 04:20") == False
 	assert tarj.PagarBoleto(v122,"06/07/2008 04:20") == False
 	
