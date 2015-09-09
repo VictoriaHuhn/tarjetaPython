@@ -51,7 +51,8 @@ class Tarjeta:
 			else:
 				print(" ")
 				print("NULL")
-
+		return self.Viaje
+		
 class TarjetaComun (Tarjeta):
 
 
@@ -91,7 +92,6 @@ class TarjetaComun (Tarjeta):
 			else:
 			    print ("Saldo Insuficiente")
 			    return False
-
 
 class TarjetaMedioBoleto (Tarjeta):
 
