@@ -60,7 +60,7 @@ def test_Tranbordo():
 	#Cargamos la tarjeta normal con lo justo para un boleto normal y dos transbordos.
 	tarj.RecargaTarjeta(5.75+1.90+1.90)
 	#Cargamos la tarjeta de medio boleto con lo justo para un medio boleto y un medio transbordo.
-	tarjM.RecargaTarjeta((2.90+0.96))
+	tarjM.RecargaTarjeta(2.90+0.96)
 	#Pagamos 3 viajes con la tarjeta normal, con 20 mins de diferencia entre c/u, en distintos colectivos.
 	assert tarj.PagarBoleto(v122,"06/07/2008 06:20") == True
 	assert tarj.PagarBoleto(K1,"06/07/2008 06:40") == True
@@ -69,4 +69,26 @@ def test_Tranbordo():
 	assert tarjM.PagarBoleto(K1,"06/07/2008 06:20") == True
 	assert tarjM.PagarBoleto(v122,"06/07/2008 06:40") == True
 	assert tarjM.Saldo() == 0
-	assert tarj.Saldo() == round(1.90)
+	assert round(tarj.Saldo()) == round(1.90)
+	
+def test_ViajesRealizados():
+	#Probamos si la función pagar boleto guarda correctamente los viajes realizados. 
+	K1 = Colectivo (1,"Semtur","K")
+	v122= Colectivo(2,"Semtur","122v")
+	tarj = TarjetaComun(1)
+	tarjM = TarjetaMedioBoleto(2)
+	#Cargamos las 2 tarjetas con lo justo para 4 viajes
+	tarj.RecargaTarjeta(5.75*2+1.90*2)
+	tarjM.RecargaTarjeta(2.90*2+0.96*2)
+	tarj.PagarBoleto(v122,"06/07/2008 06:20")
+	tarj.PagarBoleto(K1,"06/07/2008 06:40")
+	tarj.PagarBoleto(v122,"06/07/2008 07:00")
+	tarj.PagarBoleto(K1,"06/07/2008 7:20")
+	tarjM.PagarBoleto(v122,"06/07/2008 06:20")
+	tarjM.PagarBoleto(K1,"06/07/2008 06:40")
+	tarjM.PagarBoleto(v122,"06/07/2008 07:00")
+	tarjM.PagarBoleto(K1,"06/07/2008 7:20")
+	assert round(tarj.Saldo()) == 0
+	assert round(tarjM.Saldo()) == 0
+	Lista=[5]
+	Lista[0]=Viaje(K1,)
