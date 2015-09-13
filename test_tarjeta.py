@@ -108,7 +108,7 @@ def test_ViajesRealizados():
 	#Comparamos con el retorno de las funciones
 	prueba = tarjM.ViajesRealizados()
 	pruebaM = tarj.ViajesRealizados()
-	i for i in range(0,6):
+	for i in range(0,6):
 		assert prueba[i] == Lista[i]
 		assert pruebaM[i] == ListaM[i]
 	
