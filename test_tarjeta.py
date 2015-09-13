@@ -107,6 +107,7 @@ def test_ViajesRealizados():
 	ListaM[5]=Viaje()
 	#Comparamos con el retorno de las funciones
 	assert tarjM.ViajesRealizados() == ListaM
+	assert tarj.ViajesRealizados() == Lista
 		
 
 
