@@ -109,8 +109,12 @@ def test_ViajesRealizados():
 	prueba = tarjM.ViajesRealizados()
 	pruebaM = tarj.ViajesRealizados()
 	for i in range(0,6):
-		assert prueba[i] == Lista[i]
-		assert pruebaM[i] == ListaM[i]
+		assert prueba[i].monto == Lista[i].monto
+		assert prueba[i].colectivo == Lista[i].colectivo
+		assert prueba[i].horario == Lista[i].horario
+		assert pruebaM[i].monto == ListaM[i].monto
+		assert pruebaM[i].colectivo == ListaM[i].colectivo
+		assert pruebaM[i].horario == ListaM[i].horario
 	
 		
 
