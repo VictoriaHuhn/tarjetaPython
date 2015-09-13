@@ -98,7 +98,7 @@ def test_ViajesRealizados():
 	Lista[3]=Viaje(v122,"06/07/2008 6:20", 5.75)
 	Lista[4]=Viaje()
 	Lista[5]=Viaje()
-	ListaM=[x for x in range(0,6)]
+	ListaM=[y for y in range(0,6)]
 	ListaM[0]=Viaje(K1,"06/07/2008 7:20", 0.96)
 	ListaM[1]=Viaje(v122,"06/07/2008 7:00", 2.90)
 	ListaM[2]=Viaje(K1,"06/07/2008 6:40", 0.96)
@@ -106,8 +106,12 @@ def test_ViajesRealizados():
 	ListaM[4]=Viaje()
 	ListaM[5]=Viaje()
 	#Comparamos con el retorno de las funciones
-	assert tarjM.ViajesRealizados() == ListaM
-	assert tarj.ViajesRealizados() == Lista
+	prueba = tarjM.ViajesRealizados()
+	pruebaM = tarj.ViajesRealizados()
+	i for i in range(0,6):
+		assert prueba[i] == Lista[i]
+		assert pruebaM[i] == ListaM[i]
+	
 		
 
 
