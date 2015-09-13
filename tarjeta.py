@@ -48,11 +48,10 @@ class Tarjeta:
 				print ("Fecha: " + str(self.Viaje[i].horario))
 				print ("Linea: " + str(self.Viaje[i].colectivo.linea) + " Interno: " + str(self.Viaje[i].colectivo.interno))
 				print("Monto: " + str(self.Viaje[i].monto))
-				return self.Viaje[i]
 			else:
 				print(" ")
 				print("NULL")
-				return self.Viaje[i]
+		return self.Viaje
 		
 class TarjetaComun (Tarjeta):
 
