@@ -106,8 +106,8 @@ def test_ViajesRealizados():
 	ListaM[4]=Viaje()
 	ListaM[5]=Viaje()
 	#Comparamos con el retorno de las funciones
-	prueba = tarjM.ViajesRealizados()
-	pruebaM = tarj.ViajesRealizados()
+	prueba = tarj.ViajesRealizados()
+	pruebaM = tarjM.ViajesRealizados()
 	for i in range(0,6):
 		assert prueba[i].monto == Lista[i].monto
 		assert prueba[i].colectivo == Lista[i].colectivo
