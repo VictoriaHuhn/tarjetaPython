@@ -92,12 +92,12 @@ def test_ViajesRealizados():
 	assert round(tarjM.Saldo()) == 0
 	#Creamos listas independientes que tengan los mismos viajes.
 	Lista=[x for x in range(0,6)]
-	Lista[2]=Viaje(K1,"06/07/2008 7:20", 5.75)
-	Lista[3]=Viaje(v122,"06/07/2008 7:00", 1.90)
-	Lista[4]=Viaje(K1,"06/07/2008 6:40", 5.75)
-	Lista[5]=Viaje(v122,"06/07/2008 6:20", 1.90)
-	Lista[0]=Viaje()
-	Lista[1]=Viaje()
+	Lista[0]=Viaje(K1,"06/07/2008 7:20", 5.75)
+	Lista[1]=Viaje(v122,"06/07/2008 7:00", 1.90)
+	Lista[2]=Viaje(K1,"06/07/2008 6:40", 5.75)
+	Lista[3]=Viaje(v122,"06/07/2008 6:20", 1.90)
+	Lista[4]=Viaje()
+	Lista[5]=Viaje()
 	ListaM=[x for x in range(0,6)]
 	ListaM[0]=Viaje(K1,"06/07/2008 7:20", 2.90)
 	ListaM[1]=Viaje(v122,"06/07/2008 7:00", 0.96)
