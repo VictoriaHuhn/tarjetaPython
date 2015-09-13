@@ -90,5 +90,22 @@ def test_ViajesRealizados():
 	tarjM.PagarBoleto(K1,"06/07/2008 7:20")
 	assert round(tarj.Saldo()) == 0
 	assert round(tarjM.Saldo()) == 0
-	Lista=[5]
-	Lista[0]=Viaje(K1,)
+	#Creamos listas independientes que tengan los mismos viajes.
+	Lista=[6]
+	Lista[0]=Viaje(K1,"06/07/2008 7:20", 5.75)
+	Lista[1]=Viaje(v122,"06/07/2008 7:00", 1.90)
+	Lista[2]=Viaje(K1,"06/07/2008 6:40", 5.75)
+	Lista[3]=Viaje(v122,"06/07/2008 6:20", 1.90)
+	Lista[4]=Viaje()
+	Lista[5]=Viaje()
+	ListaM=[6]
+	ListaM[0]=Viaje(K1,"06/07/2008 7:20", 2.90)
+	ListaM[1]=Viaje(v122,"06/07/2008 7:00", 0.96)
+	ListaM[2]=Viaje(K1,"06/07/2008 6:40", 2.90)
+	ListaM[3]=Viaje(v122,"06/07/2008 6:20", 0.96)
+	ListaM[4]=Viaje()
+	ListaM[5]=Viaje()
+	#Comparamos con el retorno de las funciones
+	assert tarj.ViajesRealizados() == Lista
+	assert tarjM.ViajesRealizados() == ListaM
+	
