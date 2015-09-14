@@ -26,6 +26,10 @@ def test_RecargaTarjeta2():
 	tarjM.RecargaTarjeta(35)
 	assert tarj.saldo == 70
 	assert tarjM.saldo == 35
+	tarj.RecargaTarjeta(196)
+	tarjM.RecargaTarjeta(368)
+	assert tarj.saldo == 300
+	assert tarjM.saldo == 495
 
 
 def test_PagarBoletoSinSaldo():
